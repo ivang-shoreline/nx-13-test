@@ -1,0 +1,59 @@
+{
+  "root": "apps/host",
+  "sourceRoot": "apps/host/src",
+  "projectType": "application",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/web:webpack",
+      "outputs": ["{options.outputPath}"],
+      "defaultConfiguration": "production",
+      "options": {
+        "compiler": "babel",
+        "outputPath": "dist/apps/host",
+        "index": "apps/host/src/index.html",
+        "baseHref": "http://b2e5-93-159-241-152.ngrok.io",
+        "main": "apps/host/src/main.tsx",
+        "polyfills": "apps/host/src/polyfills.ts",
+        "tsConfig": "apps/host/tsconfig.app.json",
+        "assets": ["apps/host/src/favicon.ico", "apps/host/src/assets"],
+        "styles": [],
+        "scripts": [],
+        "webpackConfig": "apps/host/webpack.config.js"
+      },
+      "configurations": {
+        "production": {
+        }
+      }
+    },
+    "serve": {
+      "executor": "@nrwl/web:dev-server",
+      "options": {
+        "buildTarget": "host:build",
+        "hmr": true,
+        "port": 3001
+      },
+      "configurations": {
+        "production": {
+          "buildTarget": "host:build:production",
+          "hmr": false
+        }
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["apps/host/**/*.{ts,tsx,js,jsx}"]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/apps/host"],
+      "options": {
+        "jestConfig": "apps/host/jest.config.js",
+        "passWithNoTests": true
+      }
+    }
+  },
+  "tags": []
+}
