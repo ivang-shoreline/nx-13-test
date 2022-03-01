@@ -12,6 +12,7 @@
     "@datadog/ui-extensions-sdk": "^0.28.0",
     "@emotion/react": "11.5.0",
     "@emotion/styled": "11.3.0",
+    "@module-federation/concat-runtime": "^0.0.1",
     "core-js": "^3.6.5",
     "external-remotes-plugin": "^1.0.0",
     "react": "17.0.2",

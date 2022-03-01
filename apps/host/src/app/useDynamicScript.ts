@@ -33,24 +33,28 @@ function useDynamicScript(url: string) {
 
     setReady(false);
     setErrorLoading(false);
-
     const element = document.createElement('script');
 
-    element.src = url;
-    element.type = 'text/javascript';
-    element.async = true;
+    setTimeout(() => {
 
-    element.onload = () => {
-      urlCache.add(url);
-      setReady(true);
-    };
+      element.src = url;
+      element.type = 'text/javascript';
+      element.async = true;
 
-    element.onerror = () => {
-      setReady(false);
-      setErrorLoading(true);
-    };
+      element.onload = () => {
+        urlCache.add(url);
+        setReady(true);
+      };
 
-    document.head.appendChild(element);
+      element.onerror = () => {
+        setReady(false);
+        setErrorLoading(true);
+      };
+
+      document.head.appendChild(element);
+    }, 0)
+
+
 
     return () => {
       urlCache.delete(url);
